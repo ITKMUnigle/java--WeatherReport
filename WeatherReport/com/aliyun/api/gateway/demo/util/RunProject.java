@@ -1,7 +1,7 @@
 package com.aliyun.api.gateway.demo.util;
 
 public class RunProject {
-	//ÔËĞĞ³ÌĞò
+	//è¿è¡Œç¨‹åº
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Weather wea=new Weather();

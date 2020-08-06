@@ -18,14 +18,14 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 
 public class Weather {
-	//µ÷ÓÃ°¢ÀïÔÆÊĞ³¡API£¨Ò×Ô´Êı¾İ-È«¹úÌìÆøÔ¤±¨²éÑ¯£©Êı¾İ
+	//è°ƒç”¨é˜¿é‡Œäº‘å¸‚åœºAPIï¼ˆæ˜“æºæ•°æ®-å…¨å›½å¤©æ°”é¢„æŠ¥æŸ¥è¯¢ï¼‰æ•°æ®
 	public void Weather() {
 	    String host = "https://ali-weather.showapi.com";
 	    String path = "/ip-to-weather";
 	    String method = "GET";
-	    String appcode = "ÔÚ¹ºÂòºóÕâÀïÊäÈë×Ô¼ºµÄ°¢ÀïÔÆAppCode";
+	    String appcode = "åœ¨è´­ä¹°åè¿™é‡Œè¾“å…¥è‡ªå·±çš„é˜¿é‡Œäº‘AppCode";
 	    Map<String, String> headers = new HashMap<String, String>();
-	    //×îºóÔÚheaderÖĞµÄ¸ñÊ½(ÖĞ¼äÊÇÓ¢ÎÄ¿Õ¸ñ)ÎªAuthorization:APPCODE 83359fd73fe94948385f570e3c139105
+	    //æœ€ååœ¨headerä¸­çš„æ ¼å¼(ä¸­é—´æ˜¯è‹±æ–‡ç©ºæ ¼)ä¸ºAuthorization:APPCODE 83359fd73fe94948385f570e3c139105
 	    headers.put("Authorization", "APPCODE " + appcode);
 	    Map<String, String> querys = new HashMap<String, String>();
 	    querys.put("ip", new com.aliyun.api.gateway.demo.util.Getip().getPublicIp());
@@ -38,13 +38,12 @@ public class Weather {
 	    try {
 	    	HttpResponse response = com.aliyun.api.gateway.demo.util.HttpUtils.doGet(host, path, method, headers, querys);
 	    	String json=EntityUtils.toString(response.getEntity());
-//	    	System.out.println(json);
 	    	Jsonwriter(json);
 	    } catch (Exception e) {
 	    	e.printStackTrace();
 	    }
 	}
-	//¸ñÊ½»¯
+	//æ ¼å¼åŒ–
 	public static String JsonFormat(String json) {
 		String jsonString =json;
 		JSONObject object = JSONObject.parseObject(jsonString);
@@ -52,17 +51,17 @@ public class Weather {
 	            SerializerFeature.WriteDateUseDateFormat);
 		return pretty;
 	}
-	//Ğ´Èë
+	//å†™å…¥
 	public static void Jsonwriter(String json) {
 		try {
-			//ÅĞ¶Ïµ±Ç°Â·¾¶ÏÂÊÇ·ñº¬ÓĞresourcesÎÄ¼ş¼Ğ
+			//åˆ¤æ–­å½“å‰è·¯å¾„ä¸‹æ˜¯å¦å«æœ‰resourcesæ–‡ä»¶å¤¹
 			File dir =new File("./resources");
 			if (dir.exists()) {
-				System.out.println("´æÔÚ");
+				System.out.println("å­˜åœ¨");
 			}else {
 				dir.mkdir();
 			}
-			//ÅĞ¶ÏresourcesÎÄ¼ş¼ĞÏÂÊÇ·ñº¬ÓĞjson.txt
+			//åˆ¤æ–­resourcesæ–‡ä»¶å¤¹ä¸‹æ˜¯å¦å«æœ‰json.txt
 			File file =new File("./resources/json.txt");
 			if(file.exists()) {
 				file.delete();

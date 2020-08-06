@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Getip {
-	//通过站长之家获取IP地址
+	//鑾峰彇IP鍦板潃
     public static String getPublicIp() {
     		String ip = "";
     		String chinaz = "http://ip.chinaz.com/";
@@ -21,11 +21,9 @@ public class Getip {
     		while ((read = in.readLine()) != null) {
     		inputLine += read;
     		}
-//    		System.out.println(inputLine);
     		} catch (Exception e) {
     		e.printStackTrace();
     		}
-
     		Pattern p = Pattern.compile("<span id=\"IpValue\">(.*?)<\\/span>");
     		Matcher m = p.matcher(inputLine);
     		if(m.find()){
